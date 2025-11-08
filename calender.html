@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="calender-card">
+      <p class="month" id="month">December</p>
+      <p class="day" id="day">Friday</p>
+      <p class="date" id="date">22</p>
+      <p class="year" id="year">2023</p>
+    </div>
+</body>
+<script>
+  let getMonth = document.getElementById('month')
+  let getDay = document.getElementById('day')
+  let getDate = document.getElementById('date')
+  let getYear = document.getElementById('year')
+
+  let date = new Date()
+  getMonth.innerText = date.toLocaleString('en',{
+    month:'long'
+  })
+  getDay.innerText = date.toLocaleString('en',{
+    weekday:'long'
+  })
+  getYear.innerText = date.getFullYear()
+  getDate.innerText = date.getDate()
+</script>
+</html>
