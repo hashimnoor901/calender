@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discount system</title>
+</head>
+<body>
+  <label for="">Enter price<input id="price" type="number"></label>
+  <label for="isMember">isMember<input type="checkbox" name="" id="isMember"></label>
+  <label for="isCoupen">isCoupen<input type="checkbox" name="" id="isCoupen"></label>
+  <label for="isFirstPurchase">isFirstPurchase<input type="checkbox" name="" id="isFirstPurchase"></label>
+  <h3 id="discount" ></h3>
+  <button onclick="getDiscount()" >get Discount</button>
+  <script>
+    function getDiscount(){
+ let price = document.getElementById('price').value;
+    let isMember = document.getElementById('isMember').checked;
+    console.log(isMember)
+    let isCoupen = document.getElementById('isCoupen').checked;
+    let isFirstPurchase = document.getElementById('isFirstPurchase').checked;
+    let discount = 0
+    if(isMember && isCoupen){
+      discount = 0.25
+
+    } else if(isMember){
+      discount = 0.1
+    }else if (isCoupen){
+      discount = 0.15
+    }else if (isFirstPurchase){
+      discount = 0.05
+    }
+    let finalPrice = price - (price*discount)
+    if(finalPrice>5000){
+      finalPrice = finalPrice -= finalPrice*0.05
+    }
+    document.getElementById('discount').innerText =`Final Price After Discount ${finalPrice.toFixed(0)} ` 
+    }
+   
+
+  </script>
+</body>
+</html>
