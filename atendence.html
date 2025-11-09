@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #4a148c;
+    }
+
+    div {
+      margin: 10px 0;
+    }
+
+    label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-left: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #5e35b1;
+    }
+
+    h2 {
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scholarship check</h1>
+  <div>
+  <label for="">Enter Your Marks</label>
+  <input id="marks" type="number" placeholder="Enter Marks" >
+  <p id="marksEror" style="color: red;" ></p>
+  </div>
+<div>
+  <label for="">Enter You Attendence Percentage</label>
+  <input id="attendence" type="number" placeholder="Enter Percentage" >
+</div>
+<div>
+  <label for="isPlayer">Are you a Sports Player<input type="checkbox" name="" id="isPlayer"></label>
+</div>
+<div>
+  <button onclick="calculateGrade()" >Check Grade</button>
+</div>
+<h2 id="displayMarks" ></h2>
+<h2 id="displayStatus" ></h2>
+<script>
+
+
+  function calculateGrade(){
+  let marks = Number(document.getElementById('marks').value);
+  let attendence = Number(document.getElementById('attendence').value);
+  let isPlayer = document.getElementById('isPlayer').checked
+  let grade = ''
+  let scholarship = false
+  function checkGrade(marks){
+    if(marks==''){
+      document.getElementById('marksEror').innerText = `Marks are required`
+    }
+    else{
+     if(marks>=90 && marks<=100){
+    grade = 'A'
+  }
+  else if(marks>=80 && marks<=90){
+    grade = 'B'
+  }
+  else if (marks>=70 && marks<=80){
+    grade = 'C'
+  }
+  else if (marks>=60 && marks<=70){
+    grade = 'D'
+  }
+  else{
+    grade = 'F'
+  }
+    }
+
+  return grade
+  }
+ 
+function checkScholarship(marks,attendence,isPlayer){
+    if(marks>=80 && attendence>=75 && isPlayer ){
+    scholarship = true
+  }
+  else{
+    scholarship=false
+  }
+  return scholarship
+}
+  // check scholarship
+
+  function evaluateStudent(grade,scholarship){
+      document.getElementById('displayMarks').innerHTML = `Your Grade is ${grade}`
+  document.getElementById('displayStatus').innerHTML = scholarship ? 
+  `congradulations you are eligible for scholarship`: `you are not eligible`
+  }
+
+  checkGrade(marks)
+  checkScholarship(marks,attendence,isPlayer)
+  evaluateStudent(grade,scholarship)
+
+
+  }
+
+
+</script>
+</body>
+
+</html>
