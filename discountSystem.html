@@ -3,41 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discount system</title>
+  <title>Discount System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0;
+      color: #333;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    input[type="number"]:focus {
+      border-color: #2575fc;
+      outline: none;
+    }
+
+    input[type="checkbox"] {
+      margin-left: 10px;
+      transform: scale(1.2);
+    }
+
+    button {
+      background: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1b5edc;
+    }
+
+    h3 {
+      margin-top: 25px;
+      color: #333;
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-  <label for="">Enter price<input id="price" type="number"></label>
-  <label for="isMember">isMember<input type="checkbox" name="" id="isMember"></label>
-  <label for="isCoupen">isCoupen<input type="checkbox" name="" id="isCoupen"></label>
-  <label for="isFirstPurchase">isFirstPurchase<input type="checkbox" name="" id="isFirstPurchase"></label>
-  <h3 id="discount" ></h3>
-  <button onclick="getDiscount()" >get Discount</button>
+  <div class="card">
+    <h2>Smart Discount Calculator 💰</h2>
+
+    <label>
+      Enter Price:
+      <input id="price" type="number" placeholder="Enter price">
+    </label>
+
+    <label>
+      Is Member
+      <input type="checkbox" id="isMember">
+    </label>
+
+    <label>
+      Has Coupon
+      <input type="checkbox" id="isCoupen">
+    </label>
+
+    <label>
+      First Purchase
+      <input type="checkbox" id="isFirstPurchase">
+    </label>
+
+    <button onclick="getDiscount()">Get Discount</button>
+
+    <h3 id="discount"></h3>
+  </div>
+
   <script>
-    function getDiscount(){
- let price = document.getElementById('price').value;
-    let isMember = document.getElementById('isMember').checked;
-    console.log(isMember)
-    let isCoupen = document.getElementById('isCoupen').checked;
-    let isFirstPurchase = document.getElementById('isFirstPurchase').checked;
-    let discount = 0
-    if(isMember && isCoupen){
-      discount = 0.25
+    function getDiscount() {
+      let price = Number(document.getElementById('price').value);
+      let isMember = document.getElementById('isMember').checked;
+      let isCoupen = document.getElementById('isCoupen').checked;
+      let isFirstPurchase = document.getElementById('isFirstPurchase').checked;
 
-    } else if(isMember){
-      discount = 0.1
-    }else if (isCoupen){
-      discount = 0.15
-    }else if (isFirstPurchase){
-      discount = 0.05
-    }
-    let finalPrice = price - (price*discount)
-    if(finalPrice>5000){
-      finalPrice = finalPrice -= finalPrice*0.05
-    }
-    document.getElementById('discount').innerText =`Final Price After Discount ${finalPrice.toFixed(0)} ` 
-    }
-   
+      let discount = 0;
 
+      if (isMember && isCoupen) {
+        discount = 0.25;
+      } else if (isMember) {
+        discount = 0.1;
+      } else if (isCoupen) {
+        discount = 0.15;
+      } else if (isFirstPurchase) {
+        discount = 0.05;
+      }
+
+      let finalPrice = price - (price * discount);
+
+      if (finalPrice > 5000) {
+        finalPrice -= finalPrice * 0.05;
+      }
+
+      document.getElementById('discount').innerText =
+        `Final Price After Discount: Rs. ${finalPrice.toFixed(0)}`;
+    }
   </script>
 </body>
 </html>
