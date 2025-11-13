@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Booleans and Truthy</h1>
+  <script>
+    // falsy values are 0 false, '', NAN, undefined , null
+    if(undefined && 0 && false && NAN && null && ''){
+      console.log('truthy value')
+    }
+    else{
+      console.log('not truthy')
+    }
+    const cartQuantity = 3
+    if(cartQuantity){
+        console.log('cart has products');
+        
+    }
+    console.log(!0)
+
+    console.log('text'/5);
+
+    let var1;
+    console.log(var1);
+    
+
+    const currency = 'EUR' || 'USD'
+    console.log(currency);
+
+    const hour = 21;
+    const name = 'hashim'
+    if(hour>=6 && hour<=12 ){
+      console.log(`${name} good morning`);
+    }
+    else if(hour>=13 && hour<=17){
+      console.log(`${name} good after noon`);
+    }
+    else{
+      console.log(` ${name} good night`);
+      
+    }
+    
+
+    
+
+  </script>
+</body>
+</html>
