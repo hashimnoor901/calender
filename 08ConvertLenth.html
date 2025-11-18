@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Convert Length</h1>
+  <script>
+    function convertLength(length,from){
+    if(from==='mi'){
+        let km = length*1.609344
+       km=  Math.ceil(km)
+        alert(`${length} ${from} in km is ${km}`)
+    }
+    else if(from==='km'){
+      let miles = length*0.621371
+     miles= Math.ceil(miles)
+      alert(`${length} ${from} in miles is${miles}`)
+    }
+  }
+  convertLength(77,'km')
+  </script>
+</body>
+</html>

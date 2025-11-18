@@ -15,13 +15,66 @@
 					{ name: "abdullah", age: 21, factor_type: 2 },
 				];
         factor_two = names.filter((r)=>r.factor_type==2)
+				factor_one = names.filter((r)=>r.factor_type==1)
+				console.log('facotr one',factor_one)
         // return factor_two
         // this will return filtered array
-        return 
+				combined = [...factor_one,...factor_two]
+				console.log('combined arrays',combined);
+				
+        return combined
         // simple return will give undefined
         
 			}
 			console.log(function1());
+
+			function calculateTax(price,tax){
+				console.log('price',price);
+				
+				console.log('total price',price*tax);
+			}
+
+			function greet(name){
+				console.log(typeof(name))
+				if(!name){
+					alert('name is undefined')
+				}
+				else{
+
+					alert(`hello ${name}`)
+				}
+			}
+
+			// greet('hashim')
+			// greet('ibrahim')
+			// greet('ali')
+			greet()
+			calculateTax(20,0.2)
+
+			function convertToFehrenheit(c){
+				let fh = (c*9/5)+32
+				alert(`temprature in fh is ${fh}`)
+			}
+			convertToFehrenheit(40)
+
+			function convertToCelcius(fh){
+				let c = (fh-32)*5/9
+				alert(`Temp in celcius is ${c}`)
+			}
+			convertToCelcius(90)
+
+			function	convertTemprature(num,unit){
+				
+				if(unit==='c'){
+						let fh = (num*9/5)+32
+				}
+				else if(unit==='f'){
+					let c = (num-32)*5/9
+				}
+			 return	unit==='c' ? fh : c
+			}
+			let result = convertTemprature(43,'f')
+			log(result)
 		</script>
 	</body>
 </html>

@@ -10,16 +10,22 @@
   <input type="number" id="number">
   <button onclick="addStudent()" >add Student </button>
   <script>
+    let students = []
     function addStudent(){
-
-      let students = []
       name = document.getElementById('name').value;
       numbers = Number(document.getElementById('number').value)
 
       students.push({name:name,number:numbers})
       console.log(students)
-      
+      function passedStudents(){
+      let passed = students.filter((s)=>{s.number>=50})
+      console.log(`passed students ${passed} `);
+      return passed
+      }
+      passedStudents()
+
     }
+
   </script>
 </body>
 </html>
